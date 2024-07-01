@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30.0),
                 const Text(
-                  'Bem-vindo ao Balancesmac!',
+                  'Bem-vindo ao Financesmac!',
                   style: TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,
