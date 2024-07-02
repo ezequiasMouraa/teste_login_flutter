@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'screens/splash_screen.dart';
 import 'screens/home_page.dart';
 import 'screens/login_page.dart';
 import 'screens/signup_page.dart';
@@ -16,22 +16,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // Método _checkAuth para verificar o estado de autenticação do usuário
-  Widget _checkAuth() {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasData) {
-          return HomePage();
-        } else {
-          return LoginPage();
-        }
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: _checkAuth(), // Definindo a tela inicial com base na autenticação
+      home: SplashScreen(), // Definindo a tela de splash como tela inicial
       // Definindo as rotas para navegação
       routes: {
         '/login': (context) => LoginPage(),
